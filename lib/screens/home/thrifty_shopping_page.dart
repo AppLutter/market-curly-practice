@@ -25,12 +25,12 @@ class ThriftyShoppingPage extends StatelessWidget {
                   child: ProductFilterButton(),
                   width: 100,
                 ),
-              )
+              ),
             ],
           ),
         ),
         SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
           sliver: SliverGrid(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200.0,
@@ -38,25 +38,23 @@ class ThriftyShoppingPage extends StatelessWidget {
               crossAxisSpacing: 8.0,
               childAspectRatio: 0.6,
             ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Stack(
-                  children: [
-                    ProductItem(
-                      product: productList[index],
+            delegate:
+                SliverChildBuilderDelegate((BuildContext context, int index) {
+              return Stack(
+                children: [
+                  ProductItem(
+                    product: productList[index],
+                  ),
+                  Positioned(
+                    bottom: 90,
+                    right: 10,
+                    child: CircleContainer(
+                      iconPath: 'assets/icons/shopping-cart.svg',
                     ),
-                    Positioned(
-                      bottom: 90,
-                      right: 10,
-                      child: CircleContainer(
-                        iconPath: 'assets/icons/shopping-cart.svg',
-                      ),
-                    )
-                  ],
-                );
-              },
-              childCount: productList.length,
-            ),
+                  ),
+                ],
+              );
+            }, childCount: productList.length),
           ),
         )
       ],
